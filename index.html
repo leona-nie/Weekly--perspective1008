@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小品每周观察 - 2026年10月08日</title>
+<style>
+  :root {
+    --primary: #1A5276;
+    --primary-dark: #0D3B5E;
+    --primary-light: #D4E6F1;
+    --primary-ultra: #EBF5FB;
+    --card: #FFFFFF;
+    --text: #1C2833;
+    --text-secondary: #566573;
+    --text-weak: #99A3A4;
+    --gold: #D4AC0D;
+    --border: #D5D8DC;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    background: linear-gradient(160deg, #EBF5FB 0%, #F7FBFF 40%, #EAF3FA 100%);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 20px 60px;
+  }
+  .page-wrap { max-width: 1080px; margin: 0 auto; }
+
+  /* 顶部横幅 */
+  .banner {
+    background: linear-gradient(135deg, #0D3B5E 0%, #1A5276 55%, #2471A3 100%);
+    border-radius: 20px;
+    padding: 40px 42px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(13, 59, 94, 0.28);
+  }
+  .banner::after {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .banner-kicker {
+    font-size: 0.82em; letter-spacing: 3px; font-weight: 600;
+    color: rgba(255,255,255,0.8); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .banner h1 {
+    font-size: 2.1em; font-weight: 800; letter-spacing: 1px; line-height: 1.25;
+  }
+  .banner .subtitle {
+    margin-top: 12px; font-size: 1.0em; color: rgba(255,255,255,0.88);
+    max-width: 720px;
+  }
+  .banner .date-range {
+    display: inline-block; margin-top: 20px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.28);
+    padding: 8px 18px; border-radius: 30px;
+    font-size: 0.92em; font-weight: 600; letter-spacing: 1px;
+  }
+
+  /* 统计栏 */
+  .stats-bar {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin: 24px 0;
+  }
+  .stat {
+    flex: 1 1 150px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(26,82,118,0.06);
+  }
+  .stat .num { font-size: 1.9em; font-weight: 800; color: var(--primary); }
+  .stat .lbl { font-size: 0.82em; color: var(--text-secondary); margin-top: 4px; letter-spacing: 1px; }
+
+  /* 卡片网格 */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 26px;
+    box-shadow: 0 2px 16px rgba(26, 82, 118, 0.10);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    display: flex; flex-direction: column;
+  }
+  .card:hover {
+    box-shadow: 0 8px 30px rgba(26, 82, 118, 0.20);
+    transform: translateY(-2px);
+  }
+  .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .section-badge {
+    flex: 0 0 44px; width: 44px; height: 44px;
+    background: var(--primary); color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1em; font-weight: 700; letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(26,82,118,0.30);
+  }
+  .section-info { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+  .section-icon { font-size: 1.35em; }
+  .section-title { font-size: 1.15em; font-weight: 700; color: var(--primary-dark); }
+
+  .card-body { flex: 1; }
+  .item-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 13px; }
+  .tag {
+    font-size: 0.75em; font-weight: 600; padding: 3px 11px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  /* 标签颜色映射 */
+  .tag-us-china { background: #E8EAF6; color: #283593; }
+  .tag-geopolitics { background: #FCE4EC; color: #C62828; }
+  .tag-regional { background: #E0F2F1; color: #00695C; }
+  .tag-economy { background: #FFF3E0; color: #E65100; }
+  .tag-governance { background: #E3F2FD; color: #1565C0; }
+  .tag-thinktank { background: #F3E5F5; color: #7B1FA2; }
+  .tag-diplomacy { background: #E8F5E9; color: #2E7D32; }
+  .tag-europe { background: #ECEFF1; color: #37474F; }
+
+  .item-title {
+    font-size: 1.02em; font-weight: 600; color: var(--text);
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .item-summary {
+    font-size: 0.92em; line-height: 1.75; color: var(--text-secondary);
+    margin-bottom: 16px; text-align: justify;
+  }
+  .item-summary b { color: var(--primary-dark); font-weight: 700; }
+
+  /* 来源区域 */
+  .sources-block {
+    border-top: 1.5px dashed var(--primary-light);
+    padding-top: 14px; margin-top: auto;
+  }
+  .sources-block-label {
+    font-size: 0.78em; font-weight: 700; color: var(--primary);
+    letter-spacing: 1px; margin-bottom: 9px;
+  }
+  .sources-list { display: flex; flex-direction: column; gap: 7px; }
+  .source-row { display: flex; align-items: baseline; gap: 7px; font-size: 0.82em; flex-wrap: wrap; }
+  .source-bullet {
+    flex: 0 0 6px; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--primary); display: inline-block; margin-right: 2px; align-self: center;
+  }
+  .source-label { color: var(--text-weak); font-weight: 600; white-space: nowrap; }
+  .source-link { color: var(--primary); text-decoration: none; font-weight: 500; }
+  .source-link:hover { text-decoration: underline; color: var(--primary-dark); }
+  .source-date { color: var(--text-weak); white-space: nowrap; }
+
+  .footer-note {
+    margin-top: 28px; text-align: center; font-size: 0.8em; color: var(--text-weak);
+  }
+
+  @media (max-width: 640px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .banner { padding: 28px 22px; }
+    .banner h1 { font-size: 1.55em; }
+    .card { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="banner">
+    <div class="banner-kicker">Pin Weekly Perspective · 权威观点精选</div>
+    <h1>小品每周观察 · 中国·亚洲·世界</h1>
+    <div class="subtitle">每周从权威来源精选关于中国、亚洲与世界关系的核心观点，覆盖「中国 - 亚洲 - 世界」完整维度，8 大板块，让你用最少的时间掌握最新国内外权威研判。</div>
+    <div class="date-range">📅 2026年10月01日 — 2026年10月08日</div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="num">8</div><div class="lbl">核心板块</div></div>
+    <div class="stat"><div class="num">8</div><div class="lbl">精选观点</div></div>
+    <div class="stat"><div class="num">24+</div><div class="lbl">权威来源</div></div>
+    <div class="stat"><div class="num">7</div><div class="lbl">覆盖天数</div></div>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- 板块 1 中美战略核心观点 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="section-badge">01</div>
+        <div class="section-info">
+          <span class="section-icon">🌐</span>
+          <span class="section-title">中美战略核心观点</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="item-tags">
+          <span class="tag tag-us-china">#中美关系</span>
+          <span class="tag tag-us-china">#战略竞争</span>
+          <span class="tag tag-thinktank">#智库报告</span>
+        </div>
+        <div class="item-title">CSIS 肯尼迪：习特会"大到不能败、小到难称成功"，中美进入"管控竞争"的脆弱稳定期</div>
+        <div class="item-summary">
+          <b>CSIS 学者斯科特·肯尼迪（Scott Kennedy）</b>以"Too Big and Too Small to Fail"（大到不能失败、小到难称成功）研判习近平 9 月访美成果：双方都希望避免关系恶化，但无意解决根本分歧。贸易休战延期仅约两个月（至 11 月 10 日），远短于中方寻求的两年；台湾、半导体出口管制无实质进展；峰会并非"G2"式共治，而是相互依存中的竞争管控。中国驻美大使<b>谢锋</b> 10 月 1 日接受《新闻周刊》专访，称访美最重要成果是同意构建"基于尊重、公平、对等的中美建设性战略稳定关系"，并强调竞争应"讲规矩、守规则、有边界"，是"田径赛"而非"拳击赛"。
+        </div>
+      </div>
+      <div class="sources-block">
+        <div class="sources-block-label">可靠来源（按引用顺序）</div>
+        <div class="sources-list">
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://world.people.com.cn/n1/2026/1006/c1002-40809912.html" target="_blank" rel="noopener">人民网·中国驻美大使谢锋接受《新闻周刊》专访</a><span class="source-date">10月6日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://blogs.lse.ac.uk/usappblog/2026/10/02/trump-xi-summit-stability/" target="_blank" rel="noopener">LSE USAPP·华盛顿峰会显示中美关系需更坚实基础</a><span class="source-date">10月2日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://www.orangenews.hk/international/VWrkMKR/%e8%ac%9d%e9%8b%92-%e4%b8%ad%e7%be%8e%e4%b8%8d%e5%bf%85%e8%ab%b1%e8%a8%80%e7%ab%b6%e7%88%ad-%e4%bd%86%e6%87%89%e8%a9%b2%e5%ae%88%e8%a6%8f%e7%9f%a9%e6%9c%89%e9%82%8a%e7%95%8c.shtml" target="_blank" rel="noopener">橙新闻·谢锋：中美不必讳言竞争但应守规矩有边界</a><span class="source-date">10月</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 板块 2 东亚/东北亚地缘 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="section-badge">02</div>
+        <div class="section-info">
+          <span class="section-icon">🏯</span>
+          <span class="section-title">东亚 / 东北亚地缘</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="item-tags">
+          <span class="tag tag-geopolitics">#台海</span>
+          <span class="tag tag-geopolitics">#朝鲜半岛</span>
+          <span class="tag tag-geopolitics">#安全困境</span>
+        </div>
+        <div class="item-title">台海与半岛风险联动——台湾接收 F-16V，朝鲜"战略配合"中国警告美国</div>
+        <div class="item-summary">
+          10 月 2 日台湾接收首批 2 架 <b>F-16V</b> 战机，为近 30 年来首次接收全新美制战机；另有价值约 140 亿美元军售案（含爱国者拦截导弹、NASAMS 防空系统）被搁置数月，暴露美对台军售"批准多、交付慢"的结构性瓶颈。10 月 7 日<b>朝中社以评论家署名文章</b>批评美国向台交付 F-16V，警告美方"想清楚是否愿与中国正面较量"，被解读为朝鲜在台海问题上对中国的战略配合。日本专家<b>德地秀士</b>警告，若台海发生军事冲突，朝鲜可能借机对韩国发动导弹攻击或袭击驻韩美军，台海危机与朝鲜半岛安全高度牵连。美日韩外长 9 月下旬纽约会谈重申对朝"完全无核化"、强调台海和平，在习特会前夕安抚日韩盟友。分析指出，东亚正陷入"安全困境"——各方增加安全投入，地区整体安全感反而下降。
+        </div>
+      </div>
+      <div class="sources-block">
+        <div class="sources-block-label">可靠来源（按引用顺序）</div>
+        <div class="sources-list">
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://www.toutiao.com/article/7693855595929895475/" target="_blank" rel="noopener">朝中社评论·警告美国勿在台海挑事</a><span class="source-date">10月7日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://hk.crntt.com/doc/1072/3/2/2/107232231.html" target="_blank" rel="noopener">中评社·日专家：台海危机牵连朝鲜半岛安全</a><span class="source-date">10月</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://world.kbs.co.kr/service/news_view.htm?lang=c&id=Po&Seq_Code=90716" target="_blank" rel="noopener">KBS·韩美日外长敦促北韩重返对话</a><span class="source-date">9月22日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="http://dev.taisounds.news/news/content/84/291928" target="_blank" rel="noopener">太报·特朗普盟友称对台立场须保持坚定</a><span class="source-date">10月</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 板块 3 东南亚与东盟合作 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="section-badge">03</div>
+        <div class="section-info">
+          <span class="section-icon">🌏</span>
+          <span class="section-title">东南亚与东盟合作</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="item-tags">
+          <span class="tag tag-regional">#东盟</span>
+          <span class="tag tag-regional">#南海行为准则</span>
+          <span class="tag tag-regional">#中菲关系</span>
+        </div>
+        <div class="item-title">南海行为准则冲刺"2026 年内完成"，中菲海上摩擦仍未止</div>
+        <div class="item-summary">
+          菲律宾外长<b>拉扎罗（Ma Theresa Lazaro）</b>10 月 1 日表示，中国与东盟就《南海行为准则》（COC）谈判取得"良好进展"，谈判代表每月会晤；东盟秘书长<b>高金洪</b>称双方首次设定 2026 年内完成的时间表。但新加坡南洋理工大学<b>RSIS</b>报告指出，准则是否具法律约束力、地理适用范围、与《南海各方行为宣言》的关系等核心分歧未解。与此同时，10 月 3—4 日中菲在黄岩岛、南沙群岛海域发生摩擦：中国歼-16 战机被指对菲律宾 Cessna 飞机"骚扰"，南沙群岛间出现菲律宾小船与中国海警、海军直升机对峙。中方称系菲方军机舰船未经许可进入中国管辖海域。分析认为，尽管 COC 谈判推进，争议海域的"示强"行动仍在继续，菲律宾作为 2026 年东盟轮值主席国在推动有约束力准则上面临挑战。
+        </div>
+      </div>
+      <div class="sources-block">
+        <div class="sources-block-label">可靠来源（按引用顺序）</div>
+        <div class="sources-list">
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://rsis.edu.sg/rsis-publication/rsis/can-asean-deliver-a-binding-south-china-sea-code-of-conduct-under-manilas-chairship-in-2026/" target="_blank" rel="noopener">RSIS·马尼拉能否推动有约束力的南海行为准则</a><span class="source-date">10月</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://www.antaranews.com/berita/5774682/china-insiden-di-laut-china-selatan-karena-filipina-masuk-tanpa-izin" target="_blank" rel="noopener">Antara·中方回应南海事件：菲律宾擅自闯入</a><span class="source-date">10月</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://rri.co.id/internasional/2760498/akui-ada-hambatan-tiongkok-optimistis-negosiasi-coc-rampung-akhir-tahun-ini" target="_blank" rel="noopener">RRI·中国乐观 COC 年底完成、承认存障碍</a><span class="source-date">10月</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://www.vietnam.vn/ms/tong-thu-ky-asean-se-cung-trung-quoc-hoan-thanh-coc-trong-nam-2026" target="_blank" rel="noopener">越南通讯社·东盟秘书长称2026年内完成COC</a><span class="source-date">10月</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 板块 4 中亚、上合、周边安全 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="section-badge">04</div>
+        <div class="section-info">
+          <span class="section-icon">🏔️</span>
+          <span class="section-title">中亚、上合、周边安全</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="item-tags">
+          <span class="tag tag-regional">#上合组织</span>
+          <span class="tag tag-regional">#中亚</span>
+          <span class="tag tag-regional">#互联互通</span>
+        </div>
+        <div class="item-title">乌兹别克斯坦批准《中国—中亚永久睦邻友好合作条约》，中亚合作走向多边制度化</div>
+        <div class="item-summary">
+          10 月 3—4 日，<b>乌兹别克斯坦参议院</b>批准《哈萨克斯坦、吉尔吉斯斯坦、塔吉克斯坦、土库曼斯坦、乌兹别克斯坦与中华人民共和国永久睦邻友好合作条约》，这是"中国—中亚"机制下<b>首个多边国际条约</b>，为中吉乌铁路、交通走廊、物流基础设施与"电子丝绸之路"等重大项目提供法律基础。中吉乌铁路吉境内段已开工 27 座隧道、43 座桥梁，首座隧道贯通；新华社 10 月 5 日报道建设者"像一家人一样"的协作。10 月 4 日满载"江西制造"的中亚班列从南昌出发直通中亚四国。此外，上合组织政府首脑会议定于 10 月 19—20 日在<b>杜尚别</b>举行，聚焦经贸投资、交通物流与数字经济。分析认为，中亚安全与互联互通格局正被中俄实质重塑，中国以多边制度与基础设施深化在中亚的存在。
+        </div>
+      </div>
+      <div class="sources-block">
+        <div class="sources-block-label">可靠来源（按引用顺序）</div>
+        <div class="sources-list">
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://kun.uz./en/news/2026/10/05/senate-approves-multilateral-treaty-on-friendship-and-cooperation-with-china" target="_blank" rel="noopener">Kun.uz·乌参议院批准与华睦邻友好多边条约</a><span class="source-date">10月5日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://tashkenttimes.uz/national/19199-senate-passes-bill-ratifying-central-asia-china-treaty-on-permanent-friendship" target="_blank" rel="noopener">Tashkent Times·参议院通过中亚—中国永久友好条约</a><span class="source-date">10月</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="http://www.chinaview.cn/20261005/ae578a8b11e94a39bd363b431b2613b0/c.html" target="_blank" rel="noopener">新华社·中吉乌铁路建设者结下友谊</a><span class="source-date">10月5日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://interfax.com/newsroom/top-stories/119221/" target="_blank" rel="noopener">Interfax·上合政府首脑会议10月19—20日杜尚别举行</a><span class="source-date">10月</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 板块 5 欧美全球治理、对华研判 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="section-badge">05</div>
+        <div class="section-info">
+          <span class="section-icon">🏛️</span>
+          <span class="section-title">欧美全球治理、对华研判</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="item-tags">
+          <span class="tag tag-europe">#欧盟</span>
+          <span class="tag tag-europe">#对华政策</span>
+          <span class="tag tag-economy">#贸易摩擦</span>
+        </div>
+        <div class="item-title">德法联名信推"紧急切断开关"，欧盟对华贸易谈判临"摊牌"</div>
+        <div class="item-summary">
+          德国总理<b>默茨</b>与法国总统<b>马克龙</b> 10 月 5—6 日致欧盟委员会主席冯德莱恩的联名信曝光，提议设立类似"欧洲版 301 条款"的贸易防御工具——可在<b>24 小时内</b>切断对华市场准入（"反向多数表决"机制），并推动供应链多元化，该提案拟于 10 月 15—16 日欧盟峰会讨论。与此同时，欧盟贸易专员<b>谢夫乔维奇（Šefčovič）</b>10 月 8—9 日在北京与中国商务部长王文涛会谈，寻求缩小 2025 年达 3606 亿欧元的对华贸易逆差、扩大欧企对华出口并确保稀土出口许可。中方斥其为"单边保护主义"并警告将"坚决回应"。分析人士普遍预期难有重大突破：<b>GMF 的奈斯</b>称"只能期待一些碎片"，<b>中欧国际工商学院朱天</b>判断"只会是局部协议"。
+        </div>
+      </div>
+      <div class="sources-block">
+        <div class="sources-block-label">可靠来源（按引用顺序）</div>
+        <div class="sources-list">
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://businessmirror.com.ph/2026/10/06/germany-france-push-new-trade-weapon-before-eu-china-talks/" target="_blank" rel="noopener">彭博社·德法在欧中会谈前推动新贸易武器</a><span class="source-date">10月6日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://m.thepaper.cn/newsDetail_forward_34205289" target="_blank" rel="noopener">澎湃新闻·默茨马克龙联名信曝光</a><span class="source-date">10月</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://global.chinadaily.com.cn/a/202610/02/WS6abef04be4b06d4aa05612b0.html" target="_blank" rel="noopener">中国日报·欧盟贸易限制提议遭批</a><span class="source-date">10月2日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://today.rtl.lu/news/world/eu-trade-chief-seeks-to-dial-down-china-tensions-2047286862" target="_blank" rel="noopener">RTL·欧盟贸易专员寻求缓和对华紧张</a><span class="source-date">10月</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 板块 6 全球经济、贸易、产业链 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="section-badge">06</div>
+        <div class="section-info">
+          <span class="section-icon">📊</span>
+          <span class="section-title">全球经济、贸易、产业链</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="item-tags">
+          <span class="tag tag-economy">#全球经济</span>
+          <span class="tag tag-economy">#世界银行</span>
+          <span class="tag tag-economy">#产业链</span>
+        </div>
+        <div class="item-title">世界银行上调东亚增长至 4.5%，"AI 单一引擎"风险凸显；美拟数周内推产能过剩反制</div>
+        <div class="item-summary">
+          <b>世界银行</b>10 月 6 日发布东亚与太平洋地区经济更新，将 2026 年地区增速预测上调 0.3 个百分点至 <b>4.5%</b>，主因 AI 相关高科技投资与出口；越南 7.4%、马来西亚 5.1% 领跑。但报告警告增长高度集中于 AI 供应链——多数经济体超一半出口增长来自 AI 产品，马来西亚、菲律宾、泰国、越南更超 70%；若 AI 投资放缓、能源价格高企，增长将受冲击。G20 贸易部长会议（9 月 30 日—10 月 1 日，密尔沃基）上，美贸易代表格里尔提出的产能过剩、供应链强迫劳动议题未获共识，仅粮食武器化议题获全体支持；格里尔称将"数周内"公布针对中国、日本等 16 个经济体的反制措施。美国经济分析家<b>杰森·申克尔</b>10 月 7 日在首尔提出"Warconomy（战争经济）"概念，称韧性正取代效率成为供应链首要任务。
+        </div>
+      </div>
+      <div class="sources-block">
+        <div class="sources-block-label">可靠来源（按引用顺序）</div>
+        <div class="sources-list">
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://www.cls.cn/detail/2498199" target="_blank" rel="noopener">财联社·世界银行上调东亚太平洋经济增速</a><span class="source-date">10月6日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://www.zaobao.com/news/world/story20261003-9778938" target="_blank" rel="noopener">联合早报·G20贸易部长会议严重分歧</a><span class="source-date">10月3日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://bizn.donga.com/List/3/all/20261007/134806221/3" target="_blank" rel="noopener">东亚日报·"战争经济"时代来临</a><span class="source-date">10月7日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="http://dev.taisounds.news/news/content/84/291723" target="_blank" rel="noopener">太报·美贸易代表称数周内祭反制措施</a><span class="source-date">10月</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 板块 7 全球治理/一带一路/四大倡议 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="section-badge">07</div>
+        <div class="section-info">
+          <span class="section-icon">🕊️</span>
+          <span class="section-title">全球治理 / 一带一路 / 四大倡议</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="item-tags">
+          <span class="tag tag-governance">#全球治理</span>
+          <span class="tag tag-governance">#联合国改革</span>
+          <span class="tag tag-governance">#全球发展倡议</span>
+        </div>
+        <div class="item-title">中国在联大二委提出四点主张，推动联合国改革与全球南方代表性</div>
+        <div class="item-summary">
+          10 月 5 日，中国常驻联合国副代表<b>孙磊</b>大使在联大二委一般性辩论发言指出，2030 年议程落实严重滞后、南北发展鸿沟扩大。中方提出四点主张：锚定战略方向、将发展置于国际议程中心并深化联合国改革；回应人民期盼，在减贫、粮食能源安全、环保领域加大投入，并介绍中方发起的<b>"世界人工智能合作组织"</b>以弥合数字与智能鸿沟；坚持务实合作，推动国际金融架构改革、恢复世贸组织争端解决机制；发扬同舟共济精神，反对脱钩断链和贸易保护主义。此前中方在联大平台重申以<b>全球发展、全球安全、全球文明、全球治理四大倡议</b>为框架构建人类命运共同体。全球发展倡议已获 130 多个国家和国际组织支持，"一带一路"扩展至 150 多个国家和 30 多个国际组织。
+        </div>
+      </div>
+      <div class="sources-block">
+        <div class="sources-block-label">可靠来源（按引用顺序）</div>
+        <div class="sources-list">
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://un.china-mission.gov.cn/zgylhg/202610/t20261006_12035714.htm" target="_blank" rel="noopener">中国常驻联合国代表团·孙磊大使联大二委发言</a><span class="source-date">10月5日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="http://www.cidca.gov.cn/20260928/ad84a292a58342ceadeadb15887c0d1d/c.html" target="_blank" rel="noopener">中国外交部·顺应发展潮流 勇担历史使命</a><span class="source-date">9月28日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://www.qdxin.com.cn/politics/2026/392865.html" target="_blank" rel="noopener">时政微观察·书写共促发展合作共赢新篇章</a><span class="source-date">10月</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 板块 8 本周其他重要观察 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="section-badge">08</div>
+        <div class="section-info">
+          <span class="section-icon">🔭</span>
+          <span class="section-title">本周其他重要观察</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="item-tags">
+          <span class="tag tag-geopolitics">#中东局势</span>
+          <span class="tag tag-geopolitics">#美伊关系</span>
+          <span class="tag tag-diplomacy">#停火谈判</span>
+        </div>
+        <div class="item-title">美伊"边谈边打"：伊朗正式回应停火备忘录，霍尔木兹海峡现松动</div>
+        <div class="item-summary">
+          中东仍是本周全球焦点。伊朗副外长<b>加里巴巴迪</b>10 月 4 日表示正审议美国对伊朗"七日计划"停火方案的看法；卡塔尔 10 月 6 日确认美伊谈判继续。伊朗官媒报道，伊朗已通过巴基斯坦转交对美谅解备忘录的正式回应，核心要求是结束包括黎巴嫩在内的所有战线战争、维护霍尔木兹海峡航行安全；同日有卡塔尔 LNG 船经伊朗指定航道通过海峡，被视为善意信号。但关键分歧未解：美国副总统<b>万斯</b>要求伊朗实质削减核浓缩能力，坚持核问题与海峡解封、解除制裁一并处理，伊朗则主张先谈解封再谈核。调解方提出<b>10 天临时停火</b>方案以重开海峡，美以军事选项亦未排除。全球能源市场紧盯每日约 1200 万桶的海湾原油流通。
+        </div>
+      </div>
+      <div class="sources-block">
+        <div class="sources-block-label">可靠来源（按引用顺序）</div>
+        <div class="sources-list">
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://www.dhnet.be/dernieres-depeches/2026/10/06/guerre-au-moyen-orient-les-negociations-entre-liran-et-les-etats-unis-se-poursuivent-affirme-le-qatar-B3WT3LP355GCZL2U425JE2V3HI/" target="_blank" rel="noopener">DH·卡塔尔确认美伊谈判继续</a><span class="source-date">10月6日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://chinatimes.com.hk/20261007/154648" target="_blank" rel="noopener">中华时报·万斯吁德黑兰核问题让步</a><span class="source-date">10月7日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://www.antaranews.com/berita/5771500/iran-tinjau-pandangan-as-terkait-rencana-7-hari-penghentian-permusuhan" target="_blank" rel="noopener">Antara·伊朗审议美七日停火方案看法</a><span class="source-date">10月4日</span></div>
+          <div class="source-row"><span class="source-bullet"></span><span class="source-label">来源机构：</span><a class="source-link" href="https://nabdapp.com/t/175598716" target="_blank" rel="noopener">Nabd·调解方提议10天停火以挽救美伊协议</a><span class="source-date">10月</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">
+    小品每周观察 · 数据截至 2026年10月08日 · 观点来源于中外官方渠道、顶尖智库与权威媒体，仅供资讯参考
+  </div>
+
+</div>
+</body>
+</html>
